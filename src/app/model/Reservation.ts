@@ -1,3 +1,6 @@
+import {ReservationId} from "./ReservationId";
+
 export interface Reservation {
-  // TODO : Ajouter les attributs nécessaires pour une réservation
+  id: ReservationId;
+  reservation: number;
 }

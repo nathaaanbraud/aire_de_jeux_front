@@ -1,3 +1,3 @@
 export interface Reservation {
-  // TODO
+  // TODO : Ajouter les attributs nécessaires pour une réservation
 }

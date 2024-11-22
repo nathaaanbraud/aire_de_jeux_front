@@ -1,5 +1,67 @@
-.table{
-  border-collapse: separate;
-  border-spacing: 0;
+h1{
+  font-family:"Book Antiqua",serif;
+  text-align: center;
+  color: #7ba0c1;
 
 }
+
+.tbody tr{
+  max-width: 800px;
+  overflow-x: auto; /* permet navigation horizontale pour petits écran */
+  border:1px;
+  align-items: center;
+}
+
+
+.blocTableau{ /*car .table ne change rien*/
+  /* limite la taille pour permettre navigation verticale*/
+  overflow-x: auto;
+  max-height: 80vh;
+
+  border-collapse:collapse; /*colle les bords normalement...*/
+  background-color: aliceblue;
+}
+
+th, td{
+  /*quadrillage noir tableau*/
+  border-collapse : collapse;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+/* colonne avec l'ID */
+thead th:nth-child(1) {
+  width: 5%;
+}
+/* colonne avec le nom */
+thead th:nth-child(2) {
+  width: 10%;
+}
+/* colonne avec la description */
+thead th:nth-child(3) {
+  width: 10%;
+}
+/* colonne avec la quantité */
+thead th:nth-child(4) {
+  width: 5%;
+}
+/* colonne avec la localisation */
+thead th:nth-child(5) {
+  width: 10%;
+}
+/* 70% de l'écran*/
+
+
+
+/* dans les cellules du tableau*/
+tbody td {
+  text-align: center;
+}
+
+thead th {
+  background-color: lightskyblue;
+  font-weight: bold;
+  position: sticky;
+  top: 0;
+}
+

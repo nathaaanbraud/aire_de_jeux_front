@@ -1,23 +1,24 @@
 <h1>Tableau</h1>
 <table>
-
+  <div class="blocTableau">
   <thead>
-  <tr>
-    <th>ID</th>
-    <th>Nom</th>
-    <th>Quantité</th>
-    <th>Description</th>
-    <th>Point géo</th>
-  </tr>
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Description</th>
+      <th>Quantité</th>
+      <th>Point géo</th>
+    </tr>
   </thead>
-  <tbody>
-  <tr *ngFor="let jeu of jeuxList">
-    <td>{{ jeu.id }}</td>
-    <td>{{ jeu. nom}}</td>
-    <td>{{ jeu.description }}</td>
-    <td>{{ jeu.quantite }}</td>
-    <td>{{ jeu. pointGeo}}</td>
-  </tr>
-  </tbody>
+    <tbody>
+      <tr *ngFor="let jeu of jeuxList">
+        <td>{{ jeu.id }}</td>
+        <td>{{ jeu. nom}}</td>
+        <td>{{ jeu.description }}</td>
+        <td>{{ jeu.quantite }}</td>
+        <td>{{ jeu. pointGeo}}</td>
+      </tr>
+    </tbody>
+  </div>
 </table>
-<p>apres</p>
+

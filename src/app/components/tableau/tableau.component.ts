@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Reservation} from "../../model/Reservation";
+import {ReservationService} from "../../service/ReservationService";
 
 @Component({
   selector: 'app-tableau',
@@ -7,6 +9,12 @@ import { Component } from '@angular/core';
   templateUrl: './tableau.component.html',
   styleUrl: './tableau.component.css'
 })
-export class TableauComponent {
+export class TableauComponent implements OnInit {
+  jeux!: Reservation[];
 
+  constructor(private ReservationService: ReservationService) { }
+
+  ngOnInit() : void {
+    this.jeux = this.ReservationService.getAll();
+  }
 }

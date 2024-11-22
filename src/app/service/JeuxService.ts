@@ -13,6 +13,11 @@ export class JeuxService {
 
   constructor(private readonly http: HttpClient) { }
 
+  //getALLjeux
+  getAllJeux(): Observable<Jeux[]> {
+    return this.http.get<Jeux[]>(`${this.API_URL}/${this.API_ENTITY_NAME}`);
+  }
+
   // Récupérer un jeu par ID
   getJeuxById(id: number): Observable<Jeux> {
     return this.http.get<Jeux>(`${this.API_URL}/${id}`);
@@ -22,4 +27,5 @@ export class JeuxService {
   addJeux(jeu: Jeux): Observable<Jeux> {
     return this.http.post<Jeux>(this.API_URL, jeu);
   }
+
 }

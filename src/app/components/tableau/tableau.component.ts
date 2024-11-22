@@ -1,20 +1,27 @@
 import {Component, OnInit} from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import {Jeux} from "../../model/Jeux";
 import {JeuxService} from "../../service/JeuxService";
+import {Observable} from "rxjs";
+import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-tableau',
   standalone: true,
-  imports: [],
+  imports: [
+    NgForOf
+  ],
   templateUrl: './tableau.component.html',
   styleUrl: './tableau.component.css'
 })
 export class TableauComponent implements OnInit {
-  jeux!: Jeux[];
-
+  jeux!: Observable<Jeux[]>;
+  jeuxList: Jeux[]=[];
   constructor(private JeuxService: JeuxService) { }
 
   ngOnInit() : void {
-    this.jeux = this.JeuxService.getAll();
-  }
+    this.JeuxService.getAllJeux().subscribe((data: Jeux[]) => {
+      this.jeuxList = data;
+    });
+  };
 }

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Reservation} from "../../model/Reservation";
-import {ReservationService} from "../../service/ReservationService";
+import {Jeux} from "../../model/Jeux";
+import {JeuxService} from "../../service/JeuxService";
 
 @Component({
   selector: 'app-tableau',
@@ -10,11 +10,11 @@ import {ReservationService} from "../../service/ReservationService";
   styleUrl: './tableau.component.css'
 })
 export class TableauComponent implements OnInit {
-  jeux!: Reservation[];
+  jeux!: Jeux[];
 
-  constructor(private ReservationService: ReservationService) { }
+  constructor(private JeuxService: JeuxService) { }
 
   ngOnInit() : void {
-    this.jeux = this.ReservationService.getAll();
+    this.jeux = this.JeuxService.getAll();
   }
 }

@@ -1,1 +1,23 @@
-<p>tableau works!</p>
+<h1>Tableau</h1>
+<table>
+
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Nom</th>
+    <th>Quantité</th>
+    <th>Description</th>
+    <th>Point géo</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let jeu of jeuxList">
+    <td>{{ jeu.id }}</td>
+    <td>{{ jeu. nom}}</td>
+    <td>{{ jeu.description }}</td>
+    <td>{{ jeu.quantite }}</td>
+    <td>{{ jeu. pointGeo}}</td>
+  </tr>
+  </tbody>
+</table>
+<p>apres</p>

@@ -17,7 +17,7 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.jeuxService.getJeux().subscribe(jeu => {
+    this.jeuxService.getJeuxById(39).subscribe(jeu => {
       console.log('Game:', jeu);
     });
   }

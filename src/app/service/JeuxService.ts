@@ -8,6 +8,7 @@ import {Jeux} from "../model/Jeux";
 })
 export class JeuxService {
   // Il vaut mieux les mettre dans un fichier de configuration
+  //API_URL : string = 'http://locahost:8080/api';
   API_URL : string = '/api';
   API_ENTITY_NAME : string = 'jeux'; // TODO : Vérifier si le nom de l'entité est correcte
 

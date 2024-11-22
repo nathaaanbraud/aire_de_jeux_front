@@ -36,4 +36,22 @@ describe('JeuxService', () => {
     expect(req.request.method).toBe('GET');
     req.flush(j);
   });
+
+  it('should add a new game place (addJeux)', () => {
+    const newJeux: Jeux = { id: 0,
+      nom: 'New Game',
+      quantite: 5,
+      description: 'New Description',
+      pointGeo: 'New Point' };
+
+    service.addJeux(newJeux).subscribe(jeu => {
+      console.log('Added game:', jeu);
+      expect(jeu).toEqual(newJeux);
+    });
+
+    const req = httpMock.expectOne(service.API_URL);
+    expect(req.request.method).toBe('POST');
+    expect(req.request.body).toEqual(newJeux);
+    req.flush(newJeux);
+  });
 });

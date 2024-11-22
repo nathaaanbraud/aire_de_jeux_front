@@ -1,6 +1,5 @@
-import {ReservationId} from "./ReservationId";
-
 export interface Reservation {
-  id: ReservationId;
+  utilisateurId: number;
+  jeuId: number;
   reservation: number;
 }

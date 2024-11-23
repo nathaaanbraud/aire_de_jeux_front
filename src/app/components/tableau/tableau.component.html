@@ -1,15 +1,16 @@
-<h1>Tableau</h1>
+<h1>Aires de jeux</h1>
+
+<div class="blocTableau">
 <table>
-  <div class="blocTableau">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Nom</th>
-      <th>Description</th>
-      <th>Quantité</th>
-      <th>Point géo</th>
-    </tr>
-  </thead>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>NOM</th>
+        <th>DESCRIPTION</th>
+        <th>QUANTITE</th>
+        <th>POINT GEOGRAPHIQUE</th>
+      </tr>
+    </thead>
     <tbody>
       <tr *ngFor="let jeu of jeuxList">
         <td>{{ jeu.id }}</td>
@@ -19,6 +20,6 @@
         <td>{{ jeu. pointGeo}}</td>
       </tr>
     </tbody>
-  </div>
 </table>
+</div>
 

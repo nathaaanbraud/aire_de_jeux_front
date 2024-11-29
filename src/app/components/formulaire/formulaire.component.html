@@ -1,1 +1,24 @@
-<p>formulaire works!</p>
+
+
+
+<div class="form-container">
+  <h2>Formulaire Jeu</h2>
+  <form [formGroup]="formulaireForm" (ngSubmit)="onSubmit()">
+    <label for="nom">Nom :</label>
+    <input id="nom" formControlName="nom" type="text" />
+
+    <label for="quantite">Quantite :</label>
+    <input id="quantite" formControlName="quantite" type="number" />
+
+    <label for="description">Description :</label>
+    <textarea id="description" formControlName="description"></textarea>
+
+    <label for="pointGeo">Point geographique :</label>
+    <input id="pointGeo" formControlName="pointGeo" type="text" />
+
+    <div class="button-group">
+      <button type="submit" [disabled]="formulaireForm.invalid">Sauvegarder</button>
+      <button type="button" (click)="retourner()">Retour</button>
+    </div>
+  </form>
+</div>

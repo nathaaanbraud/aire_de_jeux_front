@@ -3,6 +3,21 @@ import * as L from 'leaflet';
 import { Jeux } from '../../model/Jeux';
 import { JeuxService } from '../../service/JeuxService';
 
+const iconRetinaUrl = 'assets/marker-icon-2x.png';
+const iconUrl = 'assets/marker-icon.png';
+const shadowUrl = 'assets/marker-shadow.png';
+const iconDefault = L.icon({
+  iconRetinaUrl,
+  iconUrl,
+  shadowUrl,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  tooltipAnchor: [16, -28],
+  shadowSize: [41, 41]
+});
+L.Marker.prototype.options.icon = iconDefault;
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -25,8 +40,8 @@ export class MapComponent implements AfterViewInit {
   }
 
   private initMap(): void {
-    // Initialiser la carte avec un centre par défaut (Paris)
-    this.map = L.map('map').setView([47.3475, 0.7191], 13); // Coordonnées de Tours
+    // Initialiser la carte avec un centre par défaut
+    this.map = L.map('map').setView([47.390139, 0.688917], 13); // Coordonnées de Tours
 
     // Ajouter les tuiles OpenStreetMap
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

@@ -32,5 +32,4 @@ export class JeuxService {
   addJeux(jeu: Jeux): Observable<Jeux> {
     return this.http.post<Jeux>(this.API_URL, jeu);
   }
-
 }

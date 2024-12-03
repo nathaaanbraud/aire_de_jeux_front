@@ -1,17 +1,20 @@
 import {Component, OnInit} from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {TableauComponent} from "./components/tableau/tableau.component";
 import {JeuxService} from "./service/JeuxService";
+import {FormulaireComponent} from "./components/formulaire/formulaire.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, TableauComponent],
+  imports: [RouterOutlet, TableauComponent, FormulaireComponent, RouterLink, RouterLinkActive],
   templateUrl: './app.component.html',
+  //template:`<router-outlet></router-outlet>`,
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit{
-  title = 'projet-crud';
+  title = 'Aire de jeux';
+
 
   constructor(private jeuxService: JeuxService) {}
 

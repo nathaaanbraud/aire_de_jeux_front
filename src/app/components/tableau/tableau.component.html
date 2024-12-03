@@ -12,13 +12,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let jeu of jeuxList">
+    <tr *ngFor="let jeu of jeuxList" (click)="navigateToFormulaire(jeu.id)" style="cursor: pointer;">
         <td>{{ jeu.id }}</td>
         <td>{{ jeu. nom}}</td>
         <td>{{ jeu.description }}</td>
         <td>{{ jeu.quantite }}</td>
         <td>{{ jeu. pointGeo}}</td>
       </tr>
+
     </tbody>
 </table>
 </div>

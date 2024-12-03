@@ -1,7 +1,11 @@
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Utilisateur} from "../model/Utilisateur";
+import {Injectable} from "@angular/core";
 
+@Injectable({
+  providedIn: 'root'
+})
 export class UtilisateurService {
   // Il vaut mieux les mettre dans un fichier de configuration
   API_URL : string = 'http://localhost:8080/api';

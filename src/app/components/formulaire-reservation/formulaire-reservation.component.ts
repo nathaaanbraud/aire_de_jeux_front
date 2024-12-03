@@ -2,25 +2,28 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {UtilisateurService} from '../../service/UtilisateurService';
 import {JeuxService} from '../../service/JeuxService';
+import {ActivatedRoute, RouterLink, RouterLinkActive} from "@angular/router";
 
 @Component({
   selector: 'app-formulaire-reservation',
   standalone: true,
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterLink,
+    RouterLinkActive
   ],
   templateUrl: './formulaire-reservation.component.html',
   styleUrl: './formulaire-reservation.component.css'
 })
 export class FormulaireReservationComponent implements OnInit {
   reservationForm: FormGroup;
-
   utilisateurs: { id: number; username: string }[] = [];
   jeux: { id: number; nom: string }[] = [];
 
 
   constructor(private formBuilder: FormBuilder, private utilisateurService: UtilisateurService,
-              private jeuxService: JeuxService,) {
+              private jeuxService: JeuxService,
+              private route: ActivatedRoute,) {
     this.reservationForm = this.formBuilder.group({
       utilisateur: ['', Validators.required],
       aire_de_jeu: ['', Validators.required],

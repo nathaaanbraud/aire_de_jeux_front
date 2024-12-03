@@ -19,7 +19,7 @@ table{
 .blocTableau{ /*car .table ne change rien*/
   /* limite la taille pour permettre navigation verticale*/
   overflow-x: auto;
-  max-height: 80vh;
+  max-height: 70vh;
 
   border: 3px solid #5b94ae;
   border-collapse:collapse; /*colle les bords normalement...*/
@@ -72,5 +72,20 @@ thead th {
 
 tbody tr:hover {
   background-color: #c6e3fb /* Survol */
+}
+
+button {
+  background-color: #5b94ae;
+  color: white;
+  padding: 10px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 50%;
+}
+bouttonReserver{
+  text-align : center;
+
 }
 

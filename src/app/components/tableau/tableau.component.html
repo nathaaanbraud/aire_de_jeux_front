@@ -17,10 +17,14 @@
         <td>{{ jeu. nom}}</td>
         <td>{{ jeu.description }}</td>
         <td>{{ jeu.quantite }}</td>
-        <td>{{ jeu. pointGeo}}</td>
+        <td (click)="navigateToMap(); $event.stopPropagation()">
+          <a href="javascript:void(0)">{{ jeu. pointGeo}}</a>
+        </td>
       </tr>
-
     </tbody>
 </table>
+</div>
+<div class="bouttonReserver">
+  <button type="button" (click)="navigateToFormulaireReservation()">Reserver</button>
 </div>
 

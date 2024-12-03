@@ -33,6 +33,12 @@ export class TableauComponent implements OnInit {
     } else {
       console.error('ID non valide pour la redirection');
     }}
+  navigateToFormulaireReservation(): void {
+    this.router.navigate(['/app-formulaire-reservation/']); // Redirige vers la route du formulaire de réservation
+  }
+  navigateToMap(): void {
+    this.router.navigate(['/app-map/']); // Redirige vers la route de la carte
+  }
 
 }
 

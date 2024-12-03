@@ -29,15 +29,16 @@ describe('JeuxService', () => {
       pointGeo: '47.3688493669, 0.6941214246' };
 
     service.getJeuxById(38).subscribe(jeu => {
+      console.log('Objet reçu :', jeu);
       expect(jeu).toEqual(j);
     });
 
-    const req = httpMock.expectOne(`${service.API_URL}/38`);
+    const req = httpMock.expectOne(`${service.API_URL}/${service.API_ENTITY_NAME}/38`);
     expect(req.request.method).toBe('GET');
     req.flush(j);
   });
 
-  it('should add a new game place (addJeux)', () => {
+  it('should add a new game ', () => {
     const newJeux: Jeux = { id: 0,
       nom: 'New Game',
       quantite: 5,
@@ -54,4 +55,38 @@ describe('JeuxService', () => {
     expect(req.request.body).toEqual(newJeux);
     req.flush(newJeux);
   });
+
+  // Test de suppression d'un jeu
+  it('should delete a game by ID (deleteJeux)', () => {
+    const gameId = 38;
+
+    service.deleteJeux(gameId).subscribe(response => {
+      expect(response).toEqual({});
+    });
+
+    const req = httpMock.expectOne(`${service.API_URL}/${service.API_ENTITY_NAME}/38`);
+    expect(req.request.method).toBe('DELETE');
+    req.flush({});
+  });
+
+  // Test de mise à jour d'un jeu
+  it('should update a game (updateJeux)', () => {
+    const updatedGame: Jeux = {
+      id: 38,
+      nom: 'Updated Game',
+      quantite: 7,
+      description: 'Updated Description',
+      pointGeo: 'Updated Point',
+    };
+
+    service.updateJeux(updatedGame).subscribe(game => {
+      expect(game).toEqual(updatedGame);
+    });
+
+    const req = httpMock.expectOne(`${service.API_URL}/${service.API_ENTITY_NAME}/${updatedGame.id}`);
+    expect(req.request.method).toBe('PUT');
+    expect(req.request.body).toEqual(updatedGame);
+    req.flush(updatedGame);
+  });
+
 });

@@ -1,15 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {TableauComponent} from "./components/tableau/tableau.component";
+import {MapComponent} from "./components/map/map.component";
 import {JeuxService} from "./service/JeuxService";
 import {FormulaireComponent} from "./components/formulaire/formulaire.component";
+import {FormulaireReservationComponent} from "./components/formulaire-reservation/formulaire-reservation.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, TableauComponent, FormulaireComponent, RouterLink, RouterLinkActive],
+  imports: [RouterOutlet, TableauComponent, FormulaireComponent, RouterLink, RouterLinkActive, MapComponent, FormulaireReservationComponent],
   templateUrl: './app.component.html',
-  //template:`<router-outlet></router-outlet>`,
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit{
@@ -19,9 +20,5 @@ export class AppComponent implements OnInit{
   constructor(private jeuxService: JeuxService) {}
 
   // A ENLEVER
-  ngOnInit(): void {
-    this.jeuxService.getJeuxById(39).subscribe(jeu => {
-      console.log('Game:', jeu);
-    });
-  }
+  ngOnInit(): void {}
 }

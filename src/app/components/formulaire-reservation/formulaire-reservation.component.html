@@ -1,0 +1,35 @@
+<p>form works</p>
+<div class="container">
+  <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="utilisateur">Utilisateur</label>
+      <select id="utilisateur" formControlName="utilisateur" class="form-control">
+        <option *ngFor="let user of utilisateurs" [value]="user.id">
+          {{ user.username }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="aire_de_jeu">Aire de jeux</label>
+      <select id="aire_de_jeu" formControlName="aire_de_jeu" class="form-control">
+        <option *ngFor="let jeu of jeux" [value]="jeu.id">
+          {{ jeu.id }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="quantite">Nombre de places</label>
+      <input
+        id="quantite"
+        type="number"
+        formControlName="quantite"
+        class="form-control"
+        min="1"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Réserver</button>
+  </form>
+</div>

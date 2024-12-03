@@ -24,12 +24,19 @@ export class JeuxService {
     return this.http.get<{}>(`${this.API_URL}/${this.API_ENTITY_NAME}/${id}`);
   }
 
-  getJeux(): Observable<Jeux[]> {
-    return this.http.get<Jeux[]>(`${this.API_URL}/${this.API_ENTITY_NAME}`);
-  }
-
   // Ajouter un jeu
   addJeux(jeu: Jeux): Observable<Jeux> {
     return this.http.post<Jeux>(this.API_URL, jeu);
   }
+
+  // Supprimer un jeu
+  deleteJeux(id: number): Observable<{}> {
+    return this.http.delete<{}>(`${this.API_URL}/${this.API_ENTITY_NAME}/${id}`);
+  }
+
+  // Mettre à jour un jeu
+  updateJeux(jeu: Jeux): Observable<Jeux> {
+    return this.http.put<Jeux>(`${this.API_URL}/${this.API_ENTITY_NAME}/${jeu.id}`, jeu);
+  }
+
 }

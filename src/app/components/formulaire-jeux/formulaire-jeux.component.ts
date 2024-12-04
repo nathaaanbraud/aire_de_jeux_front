@@ -23,20 +23,14 @@ export class FormulaireJeuxComponent implements OnInit {
   formulaireForm: FormGroup;
   id = Number(this.route.snapshot.paramMap.get('id')); //recupere id aire de jeux et charge les données
 
-  constructor(private route: ActivatedRoute,private fb: FormBuilder, private jeuxService: JeuxService,private router: Router ) {
+  constructor(private fb: FormBuilder, private jeuxService: JeuxService,
+              private route: ActivatedRoute, private router: Router ) {
     this.formulaireForm = this.fb.group({
       nom: ['', [Validators.required, Validators.maxLength(100)]],
       quantite: [null, [Validators.required, Validators.min(1)]],
       description: ['', Validators.maxLength(200)],
       pointGeo: ['', [Validators.required, Validators.maxLength(100)]]
     });
-  }
-
-  private chargerJeux(id: number): void {
-    const objet = this.jeuxService.getJeuxById(id); //remplacer par un service
-    if (objet) {
-      this.formulaireForm.patchValue(objet);
-    }
   }
 
   ngOnInit(): void {
@@ -58,11 +52,14 @@ export class FormulaireJeuxComponent implements OnInit {
         id: this.id,
         ...this.formulaireForm.value
       };
-      this.jeuxService.updateJeux(updatedJeu).subscribe(() => {
-        console.log('Données sauvegardées :', updatedJeu);
-        this.retourner();
-      }, error => {
-        console.error('Erreur lors de la sauvegarde des données:', error);
+      this.jeuxService.updateJeux(updatedJeu).subscribe({
+        next: () => {
+          alert('Données sauvegardées avec succès');
+          this.retourner();
+        },
+        error: (error) => {
+          alert('Erreur lors de la sauvegarde des données');
+        }
       });
     }
   }

@@ -8,8 +8,8 @@ import {Injectable} from "@angular/core";
 })
 export class UtilisateurService {
   // Il vaut mieux les mettre dans un fichier de configuration
-  API_URL : string = 'http://localhost:8080/api';
-  API_ENTITY_NAME : string = 'utilisateur'; // TODO : Vérifier si le nom de l'entité est correcte
+  API_URL : string = '/api';
+  API_ENTITY_NAME : string = 'utilisateurs';
 
   constructor(private readonly http: HttpClient) { }
 

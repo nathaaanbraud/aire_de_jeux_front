@@ -1,35 +1,32 @@
-<p>form works</p>
-<div class="container">
+<div class="form-container">
+  <h2>Formulaire de réservation</h2>
   <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="utilisateur">Utilisateur</label>
-      <select id="utilisateur" formControlName="utilisateur" class="form-control">
-        <option *ngFor="let user of utilisateurs" [value]="user.id">
-          {{ user.username }}
-        </option>
-      </select>
-    </div>
+    <label for="utilisateurId">Utilisateur</label>
+    <select id="utilisateurId" formControlName="utilisateurId">
+      <option *ngFor="let utilisateur of utilisateurs" [value]="utilisateur.id">
+        {{ utilisateur.username }}
+      </option>
+    </select>
 
-    <div class="form-group">
-      <label for="aire_de_jeu">Aire de jeux</label>
-      <select id="aire_de_jeu" formControlName="aire_de_jeu" class="form-control">
-        <option *ngFor="let jeu of jeux" [value]="jeu.id">
-          {{ jeu.id }}
-        </option>
-      </select>
-    </div>
+    <label for="jeuxId">Aire de jeux</label>
+    <select id="jeuxId" formControlName="jeuxId">
+      <option *ngFor="let jeu of jeux" [value]="jeu.id">
+        {{ jeu.nom }}
+      </option>
+    </select>
 
-    <div class="form-group">
-      <label for="quantite">Nombre de places</label>
-      <input
-        id="quantite"
-        type="number"
-        formControlName="quantite"
-        class="form-control"
-        min="1"
-      />
-    </div>
+    <label for="reservation">Nombre de places</label>
+    <input
+      id="reservation"
+      type="number"
+      formControlName="reservation"
+      class="form-control"
+      min="1"
+    />
 
-    <button type="submit" class="btn btn-primary">Réserver</button>
+    <div class="button-group">
+      <button type="submit" [disabled]="reservationForm.invalid">Réserver</button>
+      <button type="button" (click)="retourner()">Retour</button>
+    </div>
   </form>
 </div>

@@ -8,15 +8,14 @@ import {Reservation} from "../model/Reservation";
 })
 export class ReservationService {
   // Il vaut mieux les mettre dans un fichier de configuration
-  //API_URL : string = 'http://locahost:8080/api';
   API_URL : string = '/api';
-  API_ENTITY_NAME : string = 'reservation';
+  API_ENTITY_NAME : string = 'reservations';
 
   constructor(private readonly http: HttpClient) { }
 
   // Ajouter un jeu
   addReservation(reservation: Reservation): Observable<Reservation> {
-    return this.http.post<Reservation>(this.API_URL, reservation);
+    return this.http.post<Reservation>(`${this.API_URL}/${this.API_ENTITY_NAME}`, reservation);
   }
 
   // Recuperer toutes les reservations
@@ -50,7 +49,4 @@ export class ReservationService {
   deleteReservation(id: number): Observable<{}> {
     return this.http.delete<{}>(`${this.API_URL}/${this.API_ENTITY_NAME}/${id}`);
   }
-
-
-
 }

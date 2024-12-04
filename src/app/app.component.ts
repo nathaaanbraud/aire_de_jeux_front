@@ -13,12 +13,8 @@ import {FormulaireReservationComponent} from "./components/formulaire-reservatio
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'Aire de jeux';
 
-
-  constructor(private jeuxService: JeuxService) {}
-
-  // A ENLEVER
   ngOnInit(): void {}
 }

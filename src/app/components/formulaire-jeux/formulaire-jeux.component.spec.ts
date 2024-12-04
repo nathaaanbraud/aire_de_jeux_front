@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormulaireComponent } from './formulaire.component';
+import { FormulaireJeuxComponent } from './formulaire-jeux.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 describe('FormulaireComponent', () => {
-  let component: FormulaireComponent;
-  let fixture: ComponentFixture<FormulaireComponent>;
+  let component: FormulaireJeuxComponent;
+  let fixture: ComponentFixture<FormulaireJeuxComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        FormulaireComponent,
+        FormulaireJeuxComponent,
         ReactiveFormsModule
       ]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(FormulaireComponent);
+    fixture = TestBed.createComponent(FormulaireJeuxComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

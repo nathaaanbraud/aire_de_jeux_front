@@ -69,6 +69,7 @@ button:disabled {
 .button-group {
   display: flex;
   justify-content: space-between;
+  gap: 10px;
 }
 
 /* Texte multi-lignes */

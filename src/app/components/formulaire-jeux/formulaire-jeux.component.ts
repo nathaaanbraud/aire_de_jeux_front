@@ -14,14 +14,16 @@ import {Router, RouterLink, RouterLinkActive} from "@angular/router";
     RouterLink,
     RouterLinkActive
   ],
-  templateUrl: './formulaire.component.html',
-  styleUrls: ['./formulaire.component.css']
+  templateUrl: './formulaire-jeux.component.html',
+  styleUrls: ['./formulaire-jeux.component.css']
 })
-export class FormulaireComponent implements OnInit {
+export class FormulaireJeuxComponent implements OnInit {
   @Input() objetSelectionne: any;
   jeu!: Jeux;
   formulaireForm: FormGroup;
-  constructor(private route: ActivatedRoute,private fb: FormBuilder, private location: Location,private jeuxService: JeuxService,private router: Router ) {
+  id = Number(this.route.snapshot.paramMap.get('id')); //recupere id aire de jeux et charge les données
+
+  constructor(private route: ActivatedRoute,private fb: FormBuilder, private jeuxService: JeuxService,private router: Router ) {
     this.formulaireForm = this.fb.group({
       nom: ['', [Validators.required, Validators.maxLength(100)]],
       quantite: [null, [Validators.required, Validators.min(1)]],
@@ -29,9 +31,6 @@ export class FormulaireComponent implements OnInit {
       pointGeo: ['', [Validators.required, Validators.maxLength(100)]]
     });
   }
-  //recupere id aire de jeux et charge les données
-  id = Number(this.route.snapshot.paramMap.get('id'));
-
 
   private chargerJeux(id: number): void {
     const objet = this.jeuxService.getJeuxById(id); //remplacer par un service
@@ -39,8 +38,6 @@ export class FormulaireComponent implements OnInit {
       this.formulaireForm.patchValue(objet);
     }
   }
-
-
 
   ngOnInit(): void {
     // Récupère l'ID depuis l'URL
@@ -57,7 +54,16 @@ export class FormulaireComponent implements OnInit {
 
   onSubmit(): void {
     if (this.formulaireForm.valid) {
-      console.log('Données sauvegardées :', this.formulaireForm.value);
+      const updatedJeu: Jeux = {
+        id: this.id,
+        ...this.formulaireForm.value
+      };
+      this.jeuxService.updateJeux(updatedJeu).subscribe(() => {
+        console.log('Données sauvegardées :', updatedJeu);
+        this.retourner();
+      }, error => {
+        console.error('Erreur lors de la sauvegarde des données:', error);
+      });
     }
   }
 

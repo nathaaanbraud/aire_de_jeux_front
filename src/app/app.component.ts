@@ -3,13 +3,13 @@ import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {TableauComponent} from "./components/tableau/tableau.component";
 import {MapComponent} from "./components/map/map.component";
 import {JeuxService} from "./service/JeuxService";
-import {FormulaireComponent} from "./components/formulaire/formulaire.component";
+import {FormulaireJeuxComponent} from "./components/formulaire-jeux/formulaire-jeux.component";
 import {FormulaireReservationComponent} from "./components/formulaire-reservation/formulaire-reservation.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, TableauComponent, FormulaireComponent, RouterLink, RouterLinkActive, MapComponent, FormulaireReservationComponent],
+  imports: [RouterOutlet, TableauComponent, FormulaireJeuxComponent, RouterLink, RouterLinkActive, MapComponent, FormulaireReservationComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

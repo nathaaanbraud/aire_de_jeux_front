@@ -2,7 +2,7 @@ h1 {
   font-family: "Book Antiqua", serif;
   text-align: center;
   color: #7ba0c1;
-  /*margin-bottom: 20px;*/
+  margin-bottom: 20px;
 }
 
 /*cellules du tableau*/
@@ -31,6 +31,7 @@ table{
   border: 3px solid #5b94ae;
   border-collapse:collapse; /*colle les bords normalement...*/
   background-color: aliceblue;
+
 }
 
 /*th = titre colonne, td = cellule*/
@@ -68,6 +69,7 @@ thead th:nth-child(5) {
 /* dans les cellules du tableau*/
 tbody td {
   text-align: center;
+  font-size: 0.9em;
 }
 
 thead th { /* Titre colonne */
@@ -84,22 +86,20 @@ tbody tr:hover { /* Survol d'une ligne */
   background-color: #c6e3fb
 }
 
-tbody td {
-  text-align: center;
-  font-size: 0.9em;
-}
+
 
 mat-paginator {
-  margin-top: 15px;
+  margin: 15px auto;
   display: flex;
   justify-content: center;
+  max-width: 100%;
 }
+
 
 button {
   background-color: #5b94ae;
   color: white;
   padding: 10px 20px;
-  margin: 8px 0;
   border: none;
   cursor: pointer;
   border-radius: 5px;
@@ -130,7 +130,7 @@ containerButton {
   }
 
   thead th, tbody td {
-    font-size: 0.85em;
+    font-size: 0.9em;
   }
 
   button {

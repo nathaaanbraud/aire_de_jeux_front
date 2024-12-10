@@ -50,6 +50,7 @@ export class MapComponent implements AfterViewInit {
     }).addTo(this.map);
   }
 
+  // Ajouter les marqueurs sur la carte
   private addMarkers(): void {
     if (this.map) {
       this.jeuxList.forEach((jeu) => {

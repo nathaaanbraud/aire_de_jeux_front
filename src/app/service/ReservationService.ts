@@ -13,7 +13,7 @@ export class ReservationService {
 
   constructor(private readonly http: HttpClient) { }
 
-  // Ajouter un jeu
+  // Ajouter une réservation
   addReservation(reservation: Reservation): Observable<Reservation> {
     return this.http.post<Reservation>(`${this.API_URL}/${this.API_ENTITY_NAME}`, reservation);
   }
@@ -28,7 +28,7 @@ export class ReservationService {
     return this.http.get<{}>(`${this.API_URL}/${this.API_ENTITY_NAME}/${id}`);
   }
 
-  // recuperer les reservation d'un utilisateur
+  // recuperer les reservations d'un utilisateur
   getReservationByUser(id: number): Observable<{}> {
     return this.http.get<{}>(`${this.API_URL}/${this.API_ENTITY_NAME}/utilisateur/${id}`);
   }

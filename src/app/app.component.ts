@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {TableauComponent} from "./components/tableau/tableau.component";
 import {MapComponent} from "./components/map/map.component";
-import {JeuxService} from "./service/JeuxService";
 import {FormulaireJeuxComponent} from "./components/formulaire-jeux/formulaire-jeux.component";
 import {FormulaireReservationComponent} from "./components/formulaire-reservation/formulaire-reservation.component";
 

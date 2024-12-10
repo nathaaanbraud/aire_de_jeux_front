@@ -12,11 +12,13 @@
       </tr>
     </thead>
     <tbody>
+    <!-- lien sur chaque ligne qui redirige vers le formualire de modification de cette aire de jeu-->
     <tr *ngFor="let jeu of jeuxList" (click)="navigateToFormulaire(jeu.id)" style="cursor: pointer;">
         <td>{{ jeu.id }}</td>
         <td>{{ jeu. nom}}</td>
         <td>{{ jeu.description }}</td>
         <td>{{ jeu.quantite }}</td>
+      <!-- lien vers la map a chaque coordonnée -->
         <td (click)="navigateToMap(); $event.stopPropagation()">
           <a href="javascript:void(0)">{{ jeu. pointGeo}}</a>
         </td>
@@ -24,7 +26,7 @@
     </tbody>
 </table>
 </div>
-<div class="boutonReserver">
+<div class="containerButton"> <!-- Contenant du boutton pour Reserver amenant au formulaire de réservation -->
   <button type="button" (click)="navigateToFormulaireReservation()">Reserver</button>
 </div>
 

@@ -13,7 +13,7 @@ export class JeuxService {
 
   constructor(private readonly http: HttpClient) { }
 
-  //getALLjeux
+  //retourne la liste des jeux
   getAllJeux(): Observable<Jeux[]> {
     return this.http.get<Jeux[]>(`${this.API_URL}/${this.API_ENTITY_NAME}`);
   }

@@ -12,20 +12,23 @@ h1{
   align-items: center;
 }
 
+/*tableau*/
 table{
-  border-collapse : collapse;
+  border-collapse : collapse; /*colle les bords*/
 }
 
+/*tableau*/
 .blocTableau{ /*car .table ne change rien*/
   /* limite la taille pour permettre navigation verticale*/
   overflow-x: auto;
   max-height: 70vh;
-
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
   border: 3px solid #5b94ae;
   border-collapse:collapse; /*colle les bords normalement...*/
   background-color: aliceblue;
 }
 
+/*th = titre colonne, td = cellule*/
 th, td{
   /*quadrillage noir tableau*/
   border-collapse : collapse;
@@ -62,7 +65,7 @@ tbody td {
   text-align: center;
 }
 
-thead th {
+thead th { /* Titre colonne */
   background-color: lightskyblue;
   font-weight: bold;
   position: sticky;
@@ -70,11 +73,11 @@ thead th {
   font-family: "Verdana, fantasy,sans-serif",sans-serif;
 }
 
-tbody tr:hover {
-  background-color: #c6e3fb /* Survol */
+tbody tr:hover { /* Survol d'une ligne */
+  background-color: #c6e3fb
 }
 
-button {
+button { /* Bouton */
   background-color: #5b94ae;
   color: white;
   padding: 10px 20px;
@@ -83,8 +86,18 @@ button {
   cursor: pointer;
   border-radius: 5px;
   width: 50%;
+  display: block;
+  margin: 20px auto;
+  font-size: 1em;
+  font-weight: bold;
 }
 
-.boutonReserver{
-  text-align : center;
+/*Bouton reserver*/
+containerButton {
+  display: flex;
+  justify-content: center; /* Centre le bouton horizontalement */
+  align-items: center; /* Centre le bouton verticalement */
+  height: 100vh; /* Pleine hauteur de l'écran */
 }
+
+

@@ -14,7 +14,6 @@ import {Router, RouterLink, RouterLinkActive} from "@angular/router";
     RouterLinkActive
   ],
   templateUrl: './tableau.component.html',
-  //template: `<h1>Tableau</h1>`,
   styleUrl: './tableau.component.css'
 })
 export class TableauComponent implements OnInit {
@@ -27,17 +26,20 @@ export class TableauComponent implements OnInit {
       this.jeuxList = data;
     });
   };
+  // Redirige vers la route du formulaire avec l'ID
   navigateToFormulaire(id: number): void {
     if (id) {
-      this.router.navigate([`/app-formulaire/${id}`]); // Redirige vers la route du formulaire avec l'ID
+      this.router.navigate([`/app-formulaire/${id}`]);
     } else {
       console.error('ID non valide pour la redirection');
     }}
+  // Redirige vers la route du formulaire de réservation
   navigateToFormulaireReservation(): void {
-    this.router.navigate(['/app-formulaire-reservation/']); // Redirige vers la route du formulaire de réservation
+    this.router.navigate(['/app-formulaire-reservation/']);
   }
+  // Redirige vers la route de la carte
   navigateToMap(): void {
-    this.router.navigate(['/app-map/']); // Redirige vers la route de la carte
+    this.router.navigate(['/app-map/']);
   }
 
 }

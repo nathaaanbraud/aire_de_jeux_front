@@ -13,6 +13,7 @@ export class UtilisateurService {
 
   constructor(private readonly http: HttpClient) { }
 
+  //retourne la liste des utilisateurs
   getAllUtilisateurs(): Observable<Utilisateur[]> {
     return this.http.get<Utilisateur[]>(`${this.API_URL}/${this.API_ENTITY_NAME}`);
   }

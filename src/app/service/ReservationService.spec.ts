@@ -27,7 +27,7 @@ describe('ReservationService', () => {
   it('should add a reservation (addReservation)', () => {
     const newReservation: Reservation = {
       utilisateurId: 1,
-      jeuId: 42,
+      jeuxId: 42,
       reservation: 3,
     };
 
@@ -46,7 +46,7 @@ describe('ReservationService', () => {
     const reservationId = 1;
     const mockReservation: Reservation = {
       utilisateurId: 1,
-      jeuId: 2,
+      jeuxId: 2,
       reservation: 3,
     };
 
@@ -64,7 +64,7 @@ describe('ReservationService', () => {
     const mockReservations: Reservation[] = [
       {
         utilisateurId: 1,
-        jeuId: 40,
+        jeuxId: 40,
         reservation: 0,
       },
     ];
@@ -83,7 +83,7 @@ describe('ReservationService', () => {
     const mockReservations: Reservation[] = [
       {
         utilisateurId: 1,
-        jeuId: 40,
+        jeuxId: 40,
         reservation: 0,
       },
     ];
@@ -100,7 +100,7 @@ describe('ReservationService', () => {
   it('should update a reservation (updateReservation)', () => {
     const updatedReservation: Reservation = {
       utilisateurId: 1,
-      jeuId: 40,
+      jeuxId: 40,
       reservation: 5, // Updated reservation quantity
     };
 
@@ -109,7 +109,7 @@ describe('ReservationService', () => {
     });
 
     const req = httpMock.expectOne(
-      `${service.API_URL}/reservation/${updatedReservation.utilisateurId}/${updatedReservation.jeuId}`
+      `${service.API_URL}/reservation/${updatedReservation.utilisateurId}/${updatedReservation.jeuxId}`
     );
     expect(req.request.method).toBe('PUT');
     req.flush(updatedReservation); // Simulate the response with the updated reservation data

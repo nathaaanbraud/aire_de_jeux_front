@@ -48,7 +48,7 @@ export class TableauComponent implements OnInit {
 
   navigateToFormulaire(id: number): void {
     if (id) {
-      this.router.navigate([`/app-formulaire/${id}`]);
+      this.router.navigate([`/app-formulaire-jeux/${id}`]);
     } else {
       console.error('ID non valide pour la redirection');
     }

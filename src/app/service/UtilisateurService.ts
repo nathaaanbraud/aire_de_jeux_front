@@ -7,14 +7,31 @@ import {Injectable} from "@angular/core";
   providedIn: 'root'
 })
 export class UtilisateurService {
-  // Il vaut mieux les mettre dans un fichier de configuration
   API_URL : string = '/api';
   API_ENTITY_NAME : string = 'utilisateurs';
+
+  private currentUser: Utilisateur | null = null;
 
   constructor(private readonly http: HttpClient) { }
 
   //retourne la liste des utilisateurs
   getAllUtilisateurs(): Observable<Utilisateur[]> {
     return this.http.get<Utilisateur[]>(`${this.API_URL}/${this.API_ENTITY_NAME}`);
+  }
+
+  setCurrentUser(user: Utilisateur): void {
+    this.currentUser = user;
+  }
+
+  getCurrentUser(): Utilisateur | null {
+    return this.currentUser;
+  }
+
+  login(email: string, password: string): Observable<any> {
+    return this.http.post<any>(`${this.API_URL}/${this.API_ENTITY_NAME}/login`, { email, password });
+  }
+
+  isLoggedIn(): boolean {
+    return this.currentUser !== null;
   }
 }

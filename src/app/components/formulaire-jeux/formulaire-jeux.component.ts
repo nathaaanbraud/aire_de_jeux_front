@@ -7,7 +7,7 @@ import {JeuxService} from "../../service/JeuxService";
 import {Router, RouterLink, RouterLinkActive} from "@angular/router";
 
 @Component({
-  selector: 'app-formulaire',
+  selector: 'app-formulaire-jeux',
   standalone: true,
   imports: [
     ReactiveFormsModule,

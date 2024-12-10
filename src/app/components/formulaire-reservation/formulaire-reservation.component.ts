@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {Jeux} from "../../model/Jeux";
-import {Utilisateur} from "../../model/Utilisateur";
-import {UtilisateurService} from '../../service/UtilisateurService';
-import {JeuxService} from '../../service/JeuxService';
-import {ReservationService} from '../../service/ReservationService';
-import {Router, RouterLink, RouterLinkActive} from "@angular/router";
-import {NgForOf} from "@angular/common";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Jeux } from "../../model/Jeux";
+import { Utilisateur } from "../../model/Utilisateur";
+import { UtilisateurService } from '../../service/UtilisateurService';
+import { JeuxService } from '../../service/JeuxService';
+import { ReservationService } from '../../service/ReservationService';
+import { Router, RouterLink, RouterLinkActive } from "@angular/router";
+import { NgForOf } from "@angular/common";
 
 @Component({
   selector: 'app-formulaire-reservation',
@@ -18,7 +18,7 @@ import {NgForOf} from "@angular/common";
     NgForOf
   ],
   templateUrl: './formulaire-reservation.component.html',
-  styleUrl: './formulaire-reservation.component.css'
+  styleUrls: ['./formulaire-reservation.component.css']
 })
 export class FormulaireReservationComponent implements OnInit {
   reservationForm: FormGroup;
@@ -37,6 +37,11 @@ export class FormulaireReservationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (!this.utilisateurService.isLoggedIn()) {
+      this.router.navigate(['/login']);
+      return;
+    }
+
     this.utilisateurService.getAllUtilisateurs().subscribe((data: Utilisateur[]) => {
       this.utilisateurs = data;
     });

@@ -1,83 +1,66 @@
-h1{
-  font-family:"Book Antiqua",serif;
+h1 {
+  font-family: "Book Antiqua", serif;
   text-align: center;
   color: #7ba0c1;
+  margin-bottom: 20px;
 }
 
-/*cellules du tableau*/
-.tbody tr{
-  max-width: 800px;
-  overflow-x: auto; /* permet navigation horizontale pour petits écran */
-  border:1px;
-  align-items: center;
-}
-
-/*tableau*/
-table{
-  border-collapse : collapse; /*colle les bords*/
-}
-
-/*tableau*/
-.blocTableau{ /*car .table ne change rien*/
-  /* limite la taille pour permettre navigation verticale*/
-  overflow-x: auto;
+.blocTableau {
   max-height: 70vh;
+  overflow-y: auto;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
   border: 3px solid #5b94ae;
-  border-collapse:collapse; /*colle les bords normalement...*/
   background-color: aliceblue;
-}
-
-/*th = titre colonne, td = cellule*/
-th, td{
-  /*quadrillage noir tableau*/
-  border-collapse : collapse;
-  border: 1px solid black;
+  border-radius: 5px;
   padding: 10px;
 }
 
-/* colonne avec l'ID */
-thead th:nth-child(1) {
-  width: 5%;
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
 }
-/* colonne avec le nom */
-thead th:nth-child(2) {
-  width: 10%;
-}
-/* colonne avec la description */
-thead th:nth-child(3) {
-  width: 10%;
-}
-/* colonne avec la quantité */
-thead th:nth-child(4) {
-  width: 5%;
-}
-/* colonne avec la localisation */
-thead th:nth-child(5) {
-  width: 10%;
-}
-/* 70% de l'écran*/
 
-
-
-/* dans les cellules du tableau*/
-tbody td {
+th, td {
+  border: 1px solid black;
+  padding: 10px;
   text-align: center;
+  vertical-align: middle;
 }
 
-thead th { /* Titre colonne */
+thead th {
   background-color: lightskyblue;
   font-weight: bold;
   position: sticky;
   top: 0;
-  font-family: "Verdana, fantasy,sans-serif",sans-serif;
+  font-family: "Verdana", fantasy, sans-serif;
+  font-size: 1em;
+  z-index: 2;
 }
 
-tbody tr:hover { /* Survol d'une ligne */
-  background-color: #c6e3fb
+thead th:nth-child(1) { width: 5%; }
+thead th:nth-child(2) { width: 20%; }
+thead th:nth-child(3) { width: 10%; }
+thead th:nth-child(4) { width: 5%; }
+thead th:nth-child(5) { width: 10%; }
+
+tbody tr:hover {
+  background-color: #c6e3fb;
 }
 
-button { /* Bouton */
+tbody td {
+  text-align: center;
+  font-size: 0.9em;
+}
+
+mat-paginator {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+button {
   background-color: #5b94ae;
   color: white;
   padding: 10px 20px;
@@ -85,19 +68,33 @@ button { /* Bouton */
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  width: 50%;
-  display: block;
-  margin: 20px auto;
   font-size: 1em;
   font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
-/*Bouton reserver*/
-containerButton {
+button:hover {
+  background-color: #3c7291;
+}
+
+.containerButton {
   display: flex;
-  justify-content: center; /* Centre le bouton horizontalement */
-  align-items: center; /* Centre le bouton verticalement */
-  height: 100vh; /* Pleine hauteur de l'écran */
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
+@media (max-width: 768px) {
+  .blocTableau {
+    max-height: 60vh;
+    overflow-y: scroll;
+  }
 
+  thead th, tbody td {
+    font-size: 0.85em;
+  }
+
+  button {
+    width: 90%;
+  }
+}

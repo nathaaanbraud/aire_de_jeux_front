@@ -20,9 +20,10 @@ export class LoginComponent {
 
   onSubmit(): void {
     this.utilisateurService.login(this.email, this.password).subscribe({
-      next: () => {
+      next: (response) => {
+        this.utilisateurService.setCurrentUser(response);
         alert('Connexion réussie');
-        this.retourner();
+        this.router.navigate(['/app-formulaire-reservation']);
       }, error: () => {
         alert('Connexion échouée');
       }

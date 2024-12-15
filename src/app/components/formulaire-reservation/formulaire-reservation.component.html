@@ -1,12 +1,10 @@
 <div class="form-container">
   <h2>Formulaire de réservation</h2>
   <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
-    <label for="utilisateurId">Utilisateur</label>
-    <select id="utilisateurId" formControlName="utilisateurId">
-      <option *ngFor="let utilisateur of utilisateurs" [value]="utilisateur.id">
-        {{ utilisateur.username }}
-      </option>
-    </select>
+    <div>
+      <label>Utilisateur :</label>
+      <span>{{ currentUser?.username }}</span>
+    </div>
 
     <label for="jeuxId">Aire de jeux</label>
     <select id="jeuxId" formControlName="jeuxId">

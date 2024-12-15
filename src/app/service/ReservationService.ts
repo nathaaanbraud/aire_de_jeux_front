@@ -14,7 +14,11 @@ export class ReservationService {
   constructor(private readonly http: HttpClient) { }
 
   // Ajouter une réservation
-  addReservation(reservation: Reservation): Observable<Reservation> {
+    addReservation(reservation: {
+        utilisateurId: number | undefined;
+        reservation: number;
+        jeuxId: number
+    }): Observable<Reservation> {
     return this.http.post<Reservation>(`${this.API_URL}/${this.API_ENTITY_NAME}`, reservation);
   }
 

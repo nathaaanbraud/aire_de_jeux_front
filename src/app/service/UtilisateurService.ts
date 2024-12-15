@@ -27,8 +27,8 @@ export class UtilisateurService {
     return this.currentUser;
   }
 
-  login(email: string, password: string): Observable<any> {
-    return this.http.post<any>(`${this.API_URL}/${this.API_ENTITY_NAME}/login`, { email, password });
+  login(mail: string, password: string): Observable<any> {
+    return this.http.post<any>(`${this.API_URL}/${this.API_ENTITY_NAME}/login`, { mail, password });
   }
 
   isLoggedIn(): boolean {

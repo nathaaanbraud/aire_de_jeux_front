@@ -22,15 +22,14 @@ import { NgForOf } from "@angular/common";
 })
 export class FormulaireReservationComponent implements OnInit {
   reservationForm: FormGroup;
-  utilisateurs: Utilisateur[] = [];
   jeux: Jeux[] = [];
+  currentUser: Utilisateur | null | undefined;
 
   constructor(private formBuilder: FormBuilder, private utilisateurService: UtilisateurService,
               private jeuxService: JeuxService,
               private reservationService: ReservationService,
               private router: Router) {
     this.reservationForm = this.formBuilder.group({
-      utilisateurId: ['', Validators.required],
       jeuxId: ['', Validators.required],
       reservation: [1, [Validators.required, Validators.min(1)]]
     });
@@ -42,9 +41,7 @@ export class FormulaireReservationComponent implements OnInit {
       return;
     }
 
-    this.utilisateurService.getAllUtilisateurs().subscribe((data: Utilisateur[]) => {
-      this.utilisateurs = data;
-    });
+    this.currentUser = this.utilisateurService.getCurrentUser();
 
     this.jeuxService.getAllJeux().subscribe((data: Jeux[]) => {
       this.jeux = data;
@@ -54,11 +51,10 @@ export class FormulaireReservationComponent implements OnInit {
   onSubmit(): void {
     if (this.reservationForm.valid) {
       const formValues = {
-        utilisateurId: Number(this.reservationForm.value.utilisateurId),
+        utilisateurId: this.currentUser?.id,
         jeuxId: Number(this.reservationForm.value.jeuxId),
         reservation: Number(this.reservationForm.value.reservation)
       };
-      alert(JSON.stringify(formValues));
       this.reservationService.addReservation(formValues).subscribe({
         next: () => {
           alert('Données sauvegardées avec succès');

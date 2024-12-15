@@ -22,16 +22,19 @@ table{
 }
 
 /*tableau*/
-.blocTableau{ /*car .table ne change rien*/
+.blocTableau{
   /* limite la taille pour permettre navigation verticale*/
   overflow-x: auto;
-  max-height: 70vh;
+  max-height: 60vh;
   overflow-y: auto;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
   border: 3px solid #5b94ae;
   border-collapse:collapse; /*colle les bords normalement...*/
   background-color: aliceblue;
-
+  max-width: 90%;
+  align-content: center;
+  align-items: center;
+  margin: auto;
 }
 
 /*th = titre colonne, td = cellule*/
@@ -52,7 +55,7 @@ thead th:nth-child(2) {
 }
 /* colonne avec la description */
 thead th:nth-child(3) {
-  width: 10%;
+  width: 15%;
 }
 /* colonne avec la quantité */
 thead th:nth-child(4) {
@@ -62,7 +65,6 @@ thead th:nth-child(4) {
 thead th:nth-child(5) {
   width: 10%;
 }
-/* 70% de l'écran*/
 
 
 

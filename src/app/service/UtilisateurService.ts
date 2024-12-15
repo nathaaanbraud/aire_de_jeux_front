@@ -34,4 +34,8 @@ export class UtilisateurService {
   isLoggedIn(): boolean {
     return this.currentUser !== null;
   }
+
+  creerCompte(newUser: Utilisateur): Observable<any> {
+    return this.http.post<any>(`${this.API_URL}/${this.API_ENTITY_NAME}`, newUser);
+  }
 }

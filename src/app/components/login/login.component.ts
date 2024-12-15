@@ -33,4 +33,8 @@ export class LoginComponent {
   retourner(): void {
     this.router.navigate(['/app-tableau']);
   }
+
+  creerCompte(): void {
+    this.router.navigate(['/app-creer-compte']);
+  }
 }

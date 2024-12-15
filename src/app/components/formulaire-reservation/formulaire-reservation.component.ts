@@ -37,7 +37,7 @@ export class FormulaireReservationComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.utilisateurService.isLoggedIn()) {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/app-login']);
       return;
     }
 
@@ -59,7 +59,7 @@ export class FormulaireReservationComponent implements OnInit {
         next: () => {
           alert('Données sauvegardées avec succès');
           this.retourner();
-        }, error: (error) => {
+        }, error: () => {
           alert('Erreur lors de la sauvegarde des données');
         }
       });

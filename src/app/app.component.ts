@@ -4,11 +4,13 @@ import {TableauComponent} from "./components/tableau/tableau.component";
 import {MapComponent} from "./components/map/map.component";
 import {FormulaireJeuxComponent} from "./components/formulaire-jeux/formulaire-jeux.component";
 import {FormulaireReservationComponent} from "./components/formulaire-reservation/formulaire-reservation.component";
+import {HeaderComponent} from "./components/header/header.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, TableauComponent, FormulaireJeuxComponent, RouterLink, RouterLinkActive, MapComponent, FormulaireReservationComponent],
+  imports: [RouterOutlet, TableauComponent, FormulaireJeuxComponent, RouterLink, RouterLinkActive, MapComponent,
+    FormulaireReservationComponent, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

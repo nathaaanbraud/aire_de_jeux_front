@@ -1,7 +1,7 @@
 h1 {
   font-family: "Book Antiqua", serif;
   text-align: center;
-  color: #7ba0c1;
+  color: #3a7fbd;
   margin-bottom: 20px;
 }
 
@@ -95,7 +95,7 @@ mat-paginator {
   max-width: 100%;
 }
 
-
+/* Bouton reserver*/
 button {
   background-color: #5b94ae;
   color: white;

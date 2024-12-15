@@ -1,19 +1,28 @@
-<div class="login-container">
-  <form (ngSubmit)="onSubmit()">
-    <div>
-      <label for="email">Email:</label>
-      <input type="email" id="email" [(ngModel)]="email" name="email" required>
-    </div>
-    <div>
-      <label for="password">Password:</label>
-      <input type="password" id="password" [(ngModel)]="password" name="password" required>
-    </div>
-    <div class="button-group">
-      <button type="submit">Login</button>
-      <button type="button" (click)="retourner()">Retour</button>
-    </div>
-    <div>
-      <button type="button" (click)="creerCompte()">Je n'ai pas de compte</button>
-    </div>
-  </form>
+<div *ngIf="!currentUser">
+  <div class="login-container">
+    <form (ngSubmit)="onSubmit()">
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" [(ngModel)]="email" name="email" required>
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" [(ngModel)]="password" name="password" required>
+      </div>
+        <button class="connexion" type="submit">Se connecter</button>
+      <div>
+        <button type="button" (click)="creerCompte()">Je n'ai pas de compte</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="currentUser">
+  <div class="info-user">
+    <h2>Bienvenue, {{ currentUser.username }} !</h2>
+    <p>Nom: {{ currentUser.nom }}</p>
+    <p>Prénom: {{ currentUser.prenom }}</p>
+    <p>Email: {{ currentUser.mail }}</p>
+    <button class="deconnexion" type="button" (click)="deconnexion()">Se déconnecter</button>
+  </div>
 </div>

@@ -36,37 +36,36 @@ export class FormulaireReservationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // Vérifie si l'utilisateur est connecté
     if (!this.utilisateurService.isLoggedIn()) {
+      alert('Vous devez être connecté pour accéder à cette page');
       this.router.navigate(['/app-login']);
       return;
     }
-
+    // Récupère l'utilisateur connecté (si disponible)
     this.currentUser = this.utilisateurService.getCurrentUser();
-
+    // Récupère la liste des jeux
     this.jeuxService.getAllJeux().subscribe((data: Jeux[]) => {
       this.jeux = data;
     });
   }
-
+  // Enregistre la réservation
   onSubmit(): void {
+    // Vérifie si le formulaire est valide
     if (this.reservationForm.valid) {
       const formValues = {
         utilisateurId: this.currentUser?.id,
         jeuxId: Number(this.reservationForm.value.jeuxId),
         reservation: Number(this.reservationForm.value.reservation)
       };
+      // Enregistre la réservation
       this.reservationService.addReservation(formValues).subscribe({
         next: () => {
           alert('Données sauvegardées avec succès');
-          this.retourner();
         }, error: () => {
           alert('Erreur lors de la sauvegarde des données');
         }
       });
     }
-  }
-
-  retourner(): void {
-    this.router.navigate(['/app-tableau']);
   }
 }

@@ -17,8 +17,14 @@ import {NgForOf} from "@angular/common";
   styleUrl: './header.component.css'
 })
 export class HeaderComponent implements OnInit {
+  /**
+   * Tableau des liens de navigation qui seront affichés dans l'en-tête.
+   */
   navLinks: any[];
 
+  /**
+   * Constructeur du composant, initialise les liens de navigation.
+   */
   constructor() {
     this.navLinks = [
       {

@@ -6,6 +6,10 @@ import {Jeux} from "../../model/Jeux";
 import {JeuxService} from "../../service/JeuxService";
 import {Router, RouterLink, RouterLinkActive} from "@angular/router";
 
+/**
+ * Composant pour gérer le formulaire des aires de jeux.
+ * Permet d'ajouter ou de modifier les informations d'une aire de jeu.
+ */
 @Component({
   selector: 'app-formulaire-jeux',
   standalone: true,
@@ -18,11 +22,34 @@ import {Router, RouterLink, RouterLinkActive} from "@angular/router";
   styleUrls: ['./formulaire-jeux.component.css']
 })
 export class FormulaireJeuxComponent implements OnInit {
+  /**
+   * Objet sélectionné (peut être injecté depuis un autre composant parent).
+   */
   @Input() objetSelectionne: any;
-  jeu!: Jeux;
-  formulaireForm: FormGroup;
-  id = Number(this.route.snapshot.paramMap.get('id')); //recupere id aire de jeux et charge les données
 
+  /**
+   * Entité représentant une aire de jeu.
+   * Utilisée pour stocker les données récupérées par le service.
+   */
+  jeu!: Jeux;
+
+  /**
+   * Formulaire réactif pour gérer les champs liés à une aire de jeu.
+   */
+  formulaireForm: FormGroup;
+
+  /**
+   * Identifiant de l'aire de jeu récupéré depuis l'URL.
+   */
+  id = Number(this.route.snapshot.paramMap.get('id')); // Récupère l'ID à partir des paramètres de l'URL.
+
+  /**
+   * Constructeur pour injecter les dépendances nécessaires au composant.
+   * @param fb FormBuilder pour initialiser le formulaire.
+   * @param jeuxService Service pour gérer les opérations liées aux aires de jeux.
+   * @param route ActivatedRoute pour accéder aux paramètres de la route active.
+   * @param router Router pour gérer la navigation entre les pages.
+   */
   constructor(private fb: FormBuilder, private jeuxService: JeuxService,
               private route: ActivatedRoute, private router: Router ) {
     this.formulaireForm = this.fb.group({
@@ -33,6 +60,10 @@ export class FormulaireJeuxComponent implements OnInit {
     });
   }
 
+  /**
+   * Récupère l'ID de l'aire de jeu à partir de l'URL et charge ses données si une aire de jeu correspond a celui-ci.
+   * Remplissage automatique du formulaire avec les données récupérées.
+   */
   ngOnInit(): void {
     // Récupère l'ID depuis l'URL
     const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -46,6 +77,10 @@ export class FormulaireJeuxComponent implements OnInit {
     }
   }
 
+  /**
+   * Méthode déclenchée lors de la soumission du formulaire.
+   * Si le formulaire est valide, envoie les données au service pour les sauvegarder.
+   */
   onSubmit(): void {
     if (this.formulaireForm.valid) {
       const updatedJeu: Jeux = {

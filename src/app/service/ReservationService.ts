@@ -13,7 +13,11 @@ export class ReservationService {
 
   constructor(private readonly http: HttpClient) { }
 
-  // Ajouter une réservation
+  /**
+   * Ajoute une nouvelle réservation pour un utilisateur.
+   * @param reservation Contient les informations de la réservation : ID de l'utilisateur, ID du jeu et quantité réservée.
+   * @returns Observable de la réservation ajoutée.
+   */
     addReservation(reservation: {
         utilisateurId: number | undefined;
         reservation: number;
@@ -22,34 +26,57 @@ export class ReservationService {
     return this.http.post<Reservation>(`${this.API_URL}/${this.API_ENTITY_NAME}`, reservation);
   }
 
-  // Recuperer toutes les reservations
+  /**
+   * Récupère toutes les réservations depuis l'API.
+   * @returns Observable contenant la liste de toutes les réservations.
+   */
   getAllReservation(): Observable<Reservation[]> {
     return this.http.get<Reservation[]>(`${this.API_URL}/${this.API_ENTITY_NAME}`);
   }
 
-  // recuperer une reservation par ID
+  /**
+   * Récupère une réservation spécifique par son ID.
+   * @param id Identifiant unique de la réservation à récupérer.
+   * @returns Observable contenant les données de la réservation.
+   */
   getReservationById(id: number): Observable<{}> {
     return this.http.get<{}>(`${this.API_URL}/${this.API_ENTITY_NAME}/${id}`);
   }
 
-  // recuperer les reservations d'un utilisateur
+  /**
+   * Récupère les réservations d'un utilisateur spécifique par son ID.
+   * @param id Identifiant de l'utilisateur pour lequel récupérer ses réservations.
+   * @returns Observable contenant les réservations de l'utilisateur.
+   */
   getReservationByUser(id: number): Observable<{}> {
     return this.http.get<{}>(`${this.API_URL}/${this.API_ENTITY_NAME}/utilisateur/${id}`);
   }
 
-  //recuperer toutes les reservations d'un jeux
+  /**
+   * Récupère les réservations effectuées pour un jeu spécifique par son ID.
+   * @param id Identifiant du jeu pour lequel récupérer les réservations.
+   * @returns Observable contenant les réservations du jeu.
+   */
   getReservationByJeux(id: number): Observable<{}> {
     return this.http.get<{}>(`${this.API_URL}/${this.API_ENTITY_NAME}/jeux/${id}`);
   }
 
 
   //                         TODO : Vérifier si cela fonctionne
-  //mettre a jour une reservation
+  /**
+   * Met à jour une réservation existante.
+   * @param reservation Objet contenant les données de la réservation à mettre à jour.
+   * @returns Observable contenant les données de la réservation mise à jour.
+   */
   updateReservation(reservation: Reservation): Observable<Reservation> {
     return this.http.put<Reservation>(`${this.API_URL}/${this.API_ENTITY_NAME}/${reservation}`, reservation);
   }
 
-  //supprimer une reservation
+  /**
+   * Supprime une réservation spécifique par son ID.
+   * @param id Identifiant de la réservation à supprimer.
+   * @returns Observable de la suppression.
+   */
   deleteReservation(id: number): Observable<{}> {
     return this.http.delete<{}>(`${this.API_URL}/${this.API_ENTITY_NAME}/${id}`);
   }

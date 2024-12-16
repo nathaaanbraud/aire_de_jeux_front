@@ -1,6 +1,17 @@
 .error-snackbar {
-  background-color: #d32f2f;
   color: #fff;
+}
+
+.validation-snackbar {
+  color: #fff;
+}
+
+.error-snackbar .mat-mdc-snack-bar-action {
+  color: #d32f2f !important;
+}
+
+.validation-snackbar .mat-mdc-snack-bar-action {
+  color: #43a047 !important;
 }
 
 html, body { height: 100%; }

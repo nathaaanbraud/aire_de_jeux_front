@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import {Utilisateur} from "../../model/Utilisateur";
 import {NgIf} from "@angular/common";
+import { NotificationService } from '../../service/notification.service';
 
 /**
  * Composant pour gérer la connexion des utilisateurs.
@@ -39,8 +40,13 @@ export class LoginComponent {
    * Constructeur pour injecter les services nécessaires (UtilisateurService et Router).
    * @param utilisateurService Service de gestion des utilisateurs.
    * @param router Service de navigation entre les pages.
+   * @param notificationService
    */
-  constructor(private utilisateurService: UtilisateurService, private router: Router) {}
+  constructor(
+    private utilisateurService: UtilisateurService,
+    private router: Router,
+    private notificationService: NotificationService
+  ) {}
 
 
   /**
@@ -62,9 +68,7 @@ export class LoginComponent {
       next: (response) => {
         this.utilisateurService.setCurrentUser(response);
         this.currentUser = response; // Stocke les informations utilisateur
-        alert('Connexion réussie');
-      }, error: () => {
-        alert('Connexion échouée');
+        this.notificationService.showValidation('Connexion réussie !');
       }
     });
   }
@@ -82,6 +86,6 @@ export class LoginComponent {
   deconnexion(): void {
     this.utilisateurService.deconnexion(); // Déconnecte l'utilisateur
     this.currentUser = null; // Réinitialise les informations utilisateur
-    alert('Déconnexion réussie');
+    this.notificationService.showValidation('Déconnexion réussie !');
   }
 }

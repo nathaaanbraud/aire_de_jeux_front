@@ -7,6 +7,7 @@ import { JeuxService } from '../../service/JeuxService';
 import { ReservationService } from '../../service/ReservationService';
 import { Router, RouterLink, RouterLinkActive } from "@angular/router";
 import { NgForOf } from "@angular/common";
+import { NotificationService } from '../../service/notification.service';
 
 /**
  * Composant pour gérer le formulaire de réservation.
@@ -49,11 +50,13 @@ export class FormulaireReservationComponent implements OnInit {
    * @param jeuxService Service pour récupérer les données des jeux.
    * @param reservationService Service pour enregistrer les réservations.
    * @param router Service de navigation entre les routes Angular.
+   * @param notificationService
    */
   constructor(private formBuilder: FormBuilder, private utilisateurService: UtilisateurService,
               private jeuxService: JeuxService,
               private reservationService: ReservationService,
-              private router: Router) {
+              private router: Router,
+              private notificationService: NotificationService) {
     this.reservationForm = this.formBuilder.group({
       jeuxId: ['', Validators.required],
       reservation: [1, [Validators.required, Validators.min(1)]]
@@ -96,9 +99,7 @@ export class FormulaireReservationComponent implements OnInit {
       // Enregistre la réservation
       this.reservationService.addReservation(formValues).subscribe({
         next: () => {
-          alert('Données sauvegardées avec succès');
-        }, error: () => {
-          alert('Erreur lors de la sauvegarde des données');
+          this.notificationService.showValidation('Données sauvegardées avec succès');
         }
       });
     }

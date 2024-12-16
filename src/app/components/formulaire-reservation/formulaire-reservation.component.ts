@@ -8,6 +8,10 @@ import { ReservationService } from '../../service/ReservationService';
 import { Router, RouterLink, RouterLinkActive } from "@angular/router";
 import { NgForOf } from "@angular/common";
 
+/**
+ * Composant pour gérer le formulaire de réservation.
+ * Ce composant permet à un utilisateur connecté de réserver une aire de jeu spécifique en indiquant une quantité.
+ */
 @Component({
   selector: 'app-formulaire-reservation',
   standalone: true,
@@ -21,10 +25,31 @@ import { NgForOf } from "@angular/common";
   styleUrls: ['./formulaire-reservation.component.css']
 })
 export class FormulaireReservationComponent implements OnInit {
+  /**
+   * Formulaire réactif pour gérer les champs de la réservation.
+   */
   reservationForm: FormGroup;
+
+  /**
+   * Liste des aires de jeux disponibles pour la réservation.
+   */
   jeux: Jeux[] = [];
+
+  /**
+   * Utilisateur actuellement connecté.
+   * Null ou undefined si aucun utilisateur n'est connecté.
+   */
   currentUser: Utilisateur | null | undefined;
 
+  /**
+   * Constructeur du composant.
+   * Initialise le formulaire de réservation et injecte les services nécessaires.
+   * @param formBuilder Service permettant de construire des formulaires réactifs.
+   * @param utilisateurService Service pour gérer les utilisateurs.
+   * @param jeuxService Service pour récupérer les données des jeux.
+   * @param reservationService Service pour enregistrer les réservations.
+   * @param router Service de navigation entre les routes Angular.
+   */
   constructor(private formBuilder: FormBuilder, private utilisateurService: UtilisateurService,
               private jeuxService: JeuxService,
               private reservationService: ReservationService,
@@ -35,6 +60,10 @@ export class FormulaireReservationComponent implements OnInit {
     });
   }
 
+  /**
+   * Vérifie si l'utilisateur est connecté, si oui récupere l'utilisateur sinon le redige vers la page de connection.
+   *
+   */
   ngOnInit(): void {
     // Vérifie si l'utilisateur est connecté
     if (!this.utilisateurService.isLoggedIn()) {
@@ -49,7 +78,13 @@ export class FormulaireReservationComponent implements OnInit {
       this.jeux = data;
     });
   }
-  // Enregistre la réservation
+
+
+  /**
+   * Méthode déclenchée lors de la soumission du formulaire.
+   * Enregistre une réservation en vérifiant la validité du formulaire.
+   * Si le formulaire est valide, les données de réservation sont envoyées au service pour être enregistrées.
+   */
   onSubmit(): void {
     // Vérifie si le formulaire est valide
     if (this.reservationForm.valid) {

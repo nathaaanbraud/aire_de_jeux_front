@@ -1,0 +1,35 @@
+<h1>Mes Réservations</h1>
+
+<div class="blocTableau">
+  <table>
+    <thead>
+    <tr>
+      <th>NOM</th>
+      <th>DESCRIPTION</th>
+      <th>POINT GEOGRAPHIQUE</th>
+      <th>QUANTITE RESERVEE</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let reserv of paginatedData">
+      <td *ngIf="jeuxMap[reserv.jeuxId] as jeu">{{ jeu.nom }}</td>
+      <td *ngIf="jeuxMap[reserv.jeuxId] as jeu">{{ jeu.description }}</td>
+      <td *ngIf="jeuxMap[reserv.jeuxId] as jeu" (click)="navigateToMap(); $event.stopPropagation()">
+          <a href="javascript:void(0)">{{ jeu.pointGeo }}</a>
+      </td>
+      <td>{{ reserv.reservation }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<mat-paginator
+  [length]="reservationList.length"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="[5, 10, 20]"
+  (page)="onPageChange($event)">
+</mat-paginator>
+
+<div class="containerButton">
+  <button type="button" (click)="navigateToFormulaireReservation()">Reserver</button>
+</div>

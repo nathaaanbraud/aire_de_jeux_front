@@ -32,7 +32,7 @@ export class TableauComponent implements OnInit {
   /**
    * Colonnes à afficher dans le tableau (id, nom, description, etc.).
    */
-  displayedColumns: string[] = ['id', 'nom', 'description', 'quantite', 'pointGeo'];
+  displayedColumns: string[] = ['nom', 'description', 'quantite', 'pointGeo'];
 
   /**
    * Liste paginée des aires de jeux à afficher.

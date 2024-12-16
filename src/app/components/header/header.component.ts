@@ -43,6 +43,10 @@ export class HeaderComponent implements OnInit {
         label: 'Connexion',
         link: 'app-login',
         index: 3
+      }, {
+        label: 'Mes Réservations',
+        link: 'app-tableau-reservation',
+        index: 3
       }
     ];
 

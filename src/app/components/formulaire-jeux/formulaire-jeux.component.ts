@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 import {Jeux} from "../../model/Jeux";
 import {JeuxService} from "../../service/JeuxService";
 import {Router, RouterLink, RouterLinkActive} from "@angular/router";
+import {NotificationService} from "../../service/notification.service";
 
 /**
  * Composant pour gérer le formulaire des aires de jeux.
@@ -49,9 +50,10 @@ export class FormulaireJeuxComponent implements OnInit {
    * @param jeuxService Service pour gérer les opérations liées aux aires de jeux.
    * @param route ActivatedRoute pour accéder aux paramètres de la route active.
    * @param router Router pour gérer la navigation entre les pages.
+   * @param notificationService
    */
   constructor(private fb: FormBuilder, private jeuxService: JeuxService,
-              private route: ActivatedRoute, private router: Router ) {
+              private route: ActivatedRoute, private router: Router, private notificationService: NotificationService) {
     this.formulaireForm = this.fb.group({
       nom: ['', [Validators.required, Validators.maxLength(100)]],
       quantite: [null, [Validators.required, Validators.min(1)]],
@@ -89,11 +91,8 @@ export class FormulaireJeuxComponent implements OnInit {
       };
       this.jeuxService.updateJeux(updatedJeu).subscribe({
         next: () => {
-          alert('Données sauvegardées avec succès');
+          this.notificationService.showValidation('Aire de jeu modifiée avec succès !');
           this.retourner();
-        },
-        error: (error) => {
-          alert('Erreur lors de la sauvegarde des données');
         }
       });
     }

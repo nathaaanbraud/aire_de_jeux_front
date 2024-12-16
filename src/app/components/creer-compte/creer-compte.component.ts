@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UtilisateurService } from '../../service/UtilisateurService';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { NotificationService } from '../../service/notification.service';
 /**
  * Composant pour gérer la création d'un nouveau compte utilisateur.
  * Fournit un formulaire permettant à l'utilisateur de s'enregistrer en saisissant ses informations.
@@ -16,13 +17,38 @@ import { FormsModule } from '@angular/forms';
   standalone: true
 })
 export class CreerCompteComponent {
+  /**
+   * Nom de l'utilisateur pour la création du compte.
+   */
   nom: string = '';
+  /**
+   * Prénom de l'utilisateur pour la création du compte.
+   */
   prenom: string = '';
+  /**
+   * Nom d'utilisateur de l'utilisateur pour la création du compte.
+   */
   username: string = '';
+  /**
+   * Email de l'utilisateur pour la création du compte.
+   */
   email: string = '';
+  /**
+   * Mot de passe de l'utilisateur pour la création du compte.
+   */
   password: string = '';
 
-  constructor(private utilisateurService: UtilisateurService, private router: Router) {}
+  /**
+   * Constructeur pour injecter les services nécessaires (UtilisateurService et Router).
+   * @param utilisateurService
+   * @param router
+   * @param notificationService
+   */
+  constructor(
+    private utilisateurService: UtilisateurService,
+    private router: Router,
+    private notificationService: NotificationService
+  ) {}
 
   /**
    * Méthode appelée lorsque le formulaire est soumis.
@@ -39,16 +65,20 @@ export class CreerCompteComponent {
       username: this.username
     };
 
+    /**
+     * Appel du service pour créer un nouveau compte utilisateur.
+     */
     this.utilisateurService.creerCompte(newUser).subscribe({
       next: () => {
-        alert('Compte créé avec succès');
+        this.notificationService.showValidation('Compte créé avec succès !');
         this.router.navigate(['/app-login']);
-      }, error: () => {
-        alert('Erreur lors de la création du compte');
       }
     });
   }
 
+  /**
+   * Redirige l'utilisateur vers la page de connexion.
+   */
   retourner(): void {
     this.router.navigate(['/app-login']);
   }

@@ -17,4 +17,15 @@ export class NotificationService {
       panelClass: ['error-snackbar'],
     });
   }
+
+  /**
+   * Affiche un message de validation
+   * @param message
+   */
+  showValidation(message: string): void {
+    this.snackBar.open(message, 'Fermer', {
+      duration: 5000,
+      panelClass: ['validation-snackbar'],
+    });
+  }
 }

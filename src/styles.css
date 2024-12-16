@@ -3,5 +3,10 @@
   color: #fff;
 }
 
+.validation-snackbar {
+  background-color: #43a047;
+  color: #fff;
+}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -86,6 +86,6 @@ export class LoginComponent {
   deconnexion(): void {
     this.utilisateurService.deconnexion(); // Déconnecte l'utilisateur
     this.currentUser = null; // Réinitialise les informations utilisateur
-    alert('Déconnexion réussie');
+    this.notificationService.showValidation('Déconnexion réussie !');
   }
 }

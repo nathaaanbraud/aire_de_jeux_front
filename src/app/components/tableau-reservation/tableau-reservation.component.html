@@ -8,6 +8,7 @@
       <th>DESCRIPTION</th>
       <th>POINT GEOGRAPHIQUE</th>
       <th>QUANTITE RESERVEE</th>
+      <th></th>
     </tr>
     </thead>
     <tbody>
@@ -18,6 +19,9 @@
           <a href="javascript:void(0)">{{ jeu.pointGeo }}</a>
       </td>
       <td>{{ reserv.reservation }}</td>
+      <td>
+        <button class="buttonSupprimer" type="button" (click)="deleteReservation(reserv.jeuxId)">Supprimer</button>
+      </td>
     </tr>
     </tbody>
   </table>
@@ -31,5 +35,5 @@
 </mat-paginator>
 
 <div class="containerButton">
-  <button type="button" (click)="navigateToFormulaireReservation()">Reserver</button>
+  <button class="buttonReserv"  (click)="navigateToFormulaireReservation()">Reserver</button>
 </div>

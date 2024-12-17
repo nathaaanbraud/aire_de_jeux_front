@@ -13,6 +13,14 @@ h1 {
   align-items: center;
 }
 
+/*th = titre colonne, td = cellule*/
+th, td{
+  /*quadrillage noir tableau*/
+  border-collapse : collapse;
+  border: 1px solid black;
+  padding: 10px;
+}
+
 /*tableau*/
 table{
   border-collapse : collapse; /*colle les bords*/
@@ -66,7 +74,7 @@ mat-paginator {
 }
 
 /* Bouton reserver*/
-button {
+.buttonReserv {
   background-color: #5b94ae;
   color: white;
   padding: 10px 20px;
@@ -80,6 +88,44 @@ button {
   font-weight: bold;
   transition: background-color 0.3s ease;
 }
+
+
+/* colonne avec le nom */
+thead th:nth-child(1) {
+  width: 20%;
+}
+/* colonne avec la description  */
+thead th:nth-child(2) {
+  width: 15%;
+}
+/* colonne avec la point geo */
+thead th:nth-child(3) {
+  width: 10%;
+}
+/* colonne avec la quantité */
+thead th:nth-child(4) {
+  width: 5%;
+}
+/* colonne avec la suppression */
+thead th:nth-child(5) {
+  width: 10%;
+}
+
+.buttonSupprimer{
+  background-color: #b61c1c;
+  color: white;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 50%;
+  display: block;
+  margin: 0px auto;
+  font-size: 1em;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
 
 button:hover {
   background-color: #3c7291;

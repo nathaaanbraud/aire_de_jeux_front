@@ -77,7 +77,7 @@ export class TableauReservationComponent implements OnInit{
   ngOnInit(): void {
     // Vérifie si l'utilisateur est connecté
     if (!this.utilisateurService.isLoggedIn()) {
-      this.notificationService.showError('Vous devez être connecté pour accéder à cette page')
+      alert('Vous devez être connecté pour accéder à cette page');
       this.router.navigate(['/app-login']);
       return;
     }
@@ -144,5 +144,6 @@ export class TableauReservationComponent implements OnInit{
       this.reservationList = this.reservationList.filter(reservation => reservation.jeuxId !== jeuxId);
       this.updatePagination();
     });
+    alert('Suppression réussie');
   }
 }

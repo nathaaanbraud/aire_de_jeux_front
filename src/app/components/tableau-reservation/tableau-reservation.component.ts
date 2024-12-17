@@ -144,6 +144,6 @@ export class TableauReservationComponent implements OnInit{
       this.reservationList = this.reservationList.filter(reservation => reservation.jeuxId !== jeuxId);
       this.updatePagination();
     });
-    alert('Suppression réussie');
+    this.notificationService.showValidation('Réservation supprimée avec succès');
   }
 }

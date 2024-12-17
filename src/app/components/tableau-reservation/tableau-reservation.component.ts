@@ -138,4 +138,11 @@ export class TableauReservationComponent implements OnInit{
   navigateToMap(): void {
     this.router.navigate(['/app-map/']);
   }
+
+  deleteReservation(id: number): void {
+    this.ReservationService.deleteReservation(id).subscribe(() => {
+      this.reservationList = this.reservationList.filter(reservation => reservation.jeuxId !== id);
+      this.updatePagination();
+    });
+  }
 }

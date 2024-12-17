@@ -8,6 +8,7 @@ import {JeuxService} from "../../service/JeuxService";
 import {Utilisateur} from "../../model/Utilisateur";
 import {MatPaginator} from "@angular/material/paginator";
 import {NgForOf, NgIf} from "@angular/common";
+import {NotificationService} from "../../service/notification.service";
 
 @Component({
   selector: 'app-tableau-reservation',
@@ -60,8 +61,14 @@ export class TableauReservationComponent implements OnInit{
    * @param utilisateurService
    * @param jeuxService
    * @param router Service pour gérer la navigation entre les pages.
+   * @param notificationService
    */
-  constructor(private ReservationService: ReservationService,private utilisateurService: UtilisateurService, private jeuxService: JeuxService,private router: Router) {}
+  constructor(private ReservationService: ReservationService,
+              private utilisateurService: UtilisateurService,
+              private jeuxService: JeuxService,
+              private router: Router,
+              private notificationService: NotificationService
+              ) {}
 
   /**
    * Méthode d'initialisation du composant.
@@ -70,7 +77,7 @@ export class TableauReservationComponent implements OnInit{
   ngOnInit(): void {
     // Vérifie si l'utilisateur est connecté
     if (!this.utilisateurService.isLoggedIn()) {
-      alert('Vous devez être connecté pour accéder à cette page');
+      this.notificationService.showError('Vous devez être connecté pour accéder à cette page')
       this.router.navigate(['/app-login']);
       return;
     }

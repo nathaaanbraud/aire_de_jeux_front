@@ -74,10 +74,11 @@ export class ReservationService {
 
   /**
    * Supprime une réservation spécifique par son ID.
-   * @param id Identifiant de la réservation à supprimer.
+   * @param utilisateurId Identifiant de l'utilisateur pour lequel supprimer la réservation.
+   * @param jeuxId Identifiant du jeu pour lequel supprimer la réservation.
    * @returns Observable de la suppression.
    */
-  deleteReservation(id: number): Observable<{}> {
-    return this.http.delete<{}>(`${this.API_URL}/${this.API_ENTITY_NAME}/${id}`);
+  deleteReservation(utilisateurId: number, jeuxId: number): Observable<{}> {
+    return this.http.delete<{}>(`${this.API_URL}/${this.API_ENTITY_NAME}/${utilisateurId}/${jeuxId}`);
   }
 }

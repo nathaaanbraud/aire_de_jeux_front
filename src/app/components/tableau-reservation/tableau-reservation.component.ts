@@ -78,7 +78,7 @@ export class TableauReservationComponent implements OnInit{
   ngOnInit(): void {
     // Vérifie si l'utilisateur est connecté
     if (!this.utilisateurService.isLoggedIn()) {
-      alert('Vous devez être connecté pour accéder à cette page');
+      this.notificationService.showError("Vous devez être connecté pour voir vos réservations")
       this.router.navigate(['/app-login']);
       return;
     }

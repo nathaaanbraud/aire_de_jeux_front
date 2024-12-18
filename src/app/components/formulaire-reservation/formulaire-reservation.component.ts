@@ -65,7 +65,6 @@ export class FormulaireReservationComponent implements OnInit {
 
   /**
    * Vérifie si l'utilisateur est connecté, si oui récupere l'utilisateur sinon le redige vers la page de connection.
-   *
    */
   ngOnInit(): void {
     // Vérifie si l'utilisateur est connecté

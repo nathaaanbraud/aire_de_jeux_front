@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Jeux} from "../../model/Jeux";
 import {Router} from "@angular/router";
 import {Reservation} from "../../model/Reservation";
 import {ReservationService} from "../../service/ReservationService";
@@ -52,8 +51,10 @@ export class TableauReservationComponent implements OnInit{
    * Numéro de la page actuelle.
    */
   currentPage = 0;
-
-  jeuxMap: { [id: number]: any } = {}; // Mapping entre jeuxId et détails des jeux
+  /**
+   * Mapping entre jeuxId et détails des jeux
+   */
+  jeuxMap: { [id: number]: any } = {};
 
   /**
    * Constructeur pour injecter les services nécessaires au composant.
@@ -94,7 +95,6 @@ export class TableauReservationComponent implements OnInit{
 
   /**
    * Récupère les détails des jeux réservés par l'utilisateur.
-   *
    */
   fetchJeuxDetails(): void {
     this.reservationList.forEach(reservation => {
@@ -126,19 +126,24 @@ export class TableauReservationComponent implements OnInit{
   }
 
   /**
-   * REdirige vers le formulaire de réservation.
+   * Redirige vers le formulaire de réservation.
    */
   navigateToFormulaireReservation(): void {
     this.router.navigate(['/app-formulaire-reservation/']);
   }
 
   /**
-   * REdirige vers la carte.
+   * Redirige vers la carte.
    */
   navigateToMap(): void {
     this.router.navigate(['/app-map/']);
   }
 
+  /**
+   * Supprime une réservation de la liste des réservations de l'utilisateur.
+   * @param utilisateurId Identifiant de l'utilisateur connecté.
+   * @param jeuxId Identifiant de l'aire de jeux réservée.
+   */
   deleteReservation(utilisateurId: number, jeuxId: number): void {
     this.ReservationService.deleteReservation(utilisateurId, jeuxId).subscribe(() => {
       this.reservationList = this.reservationList.filter(reservation => reservation.jeuxId !== jeuxId);

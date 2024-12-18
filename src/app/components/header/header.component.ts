@@ -16,7 +16,7 @@ import {NgForOf} from "@angular/common";
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent{
   /**
    * Tableau des liens de navigation qui seront affichés dans l'en-tête.
    */
@@ -52,7 +52,5 @@ export class HeaderComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-  }
 
 }
